@@ -2,7 +2,7 @@ name: Keep HF Space Alive
 
 on:
   schedule:
-    - cron: "*/2 * * * *"
+    - cron: "*/1 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,4 +12,4 @@ jobs:
       - name: Ping HF Space
         run: |
           curl -L --max-time 60 --retry 3 --retry-delay 10 \
-            https://zxm1010-api-cpa2.hf.space/
+            https://zxm1010-api-cpa3.hf.space/
