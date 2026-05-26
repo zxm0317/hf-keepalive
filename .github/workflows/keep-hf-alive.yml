@@ -1,0 +1,21 @@
+name: Keep Hugging Face Space Alive
+
+on:
+  schedule:
+    # 每 5 分钟跑一次（GitHub Actions 最短间隔）
+    - cron: "*/5 * * * *"
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  ping-space:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Hugging Face Space
+        env:
+          # 你的 CLIProxyAPI Space 地址
+          HF_SPACE_URL: "https://zxm1010-cliproxyapi.hf.space"
+        run: |
+          echo "Pinging $HF_SPACE_URL ..."
+          curl -sS -f -o /dev/null -w "%{http_code}" "$HF_SPACE_URL" || true
